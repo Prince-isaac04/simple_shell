@@ -13,6 +13,6 @@ extern char **environ;
 char *pathExist(const char *ecmd);
 
 char *string_concat(char *destination, char *root);
-
+int putchar(char *c);
 #endif
 
