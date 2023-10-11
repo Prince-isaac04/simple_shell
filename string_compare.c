@@ -1,13 +1,20 @@
-#include <stdio.h>
+#include "shell.h"
 
-int comstring(const char *str1, *name) 
+int strn_cmp(const char *str1, const char *str2, size_t m)
 {
-    while (*str1 != '\0' && *name != '\0') {
-        if (*str1 != *name) {
-            return 0;
+    while (m > 0 && *str1 && *str2) 
+    {
+        if (*str1 != *str2) {
+            return (*str1 - *str2);
         }
         str1++;
-        name++;
+        str2++;
+        m--;
     }
-    return (*str1 == '\0' && *name == '\0');
+
+    if (m == 0) {
+        return 0;
+    } else {
+        return (*str1 - *str2);
+    }
 }

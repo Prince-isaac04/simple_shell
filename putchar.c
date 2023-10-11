@@ -1,8 +1,7 @@
-#include "shel.h"
+#include "shell.h"
 
-int _putchar(char *c)
+void _put(char *c)
 {
-	write(1, &c, 1)
-		return (c);
+	write(1, &c, 1);
 }
 

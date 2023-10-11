@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int cal_Str_Len(const char *m) 
+int Cal_Str_Len(const char *m) 
 {
     int leng = 0;
 

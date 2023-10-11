@@ -1,7 +1,7 @@
 #include "shell.h"
 
 
-char *string_concat(char *destination, char *root) 
+char *string_concat(char *destination, const char *root) 
 {
     char *final_dest = destination;
 
@@ -15,7 +15,12 @@ char *string_concat(char *destination, char *root)
         destination++;
         root++;
     }
-    *destinatination = '\0';
+    *destination = '\0';
     return final_dest;
 }
 
+
+void _strcat(char *dest, const char *src) 
+{
+    string_concat(dest, src);
+}
