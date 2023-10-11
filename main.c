@@ -1,8 +1,7 @@
 #include "shell.h"
-
+extern char **environ;
 int main() 
 {
-	extern char **environ;
 	char *buff = NULL, *argv[2];
 	size_t n = 0;
 	ssize_t eofnum;
@@ -11,10 +10,10 @@ int main()
 	pid_t child_pid;
 
 	while (1) {
-		printf("prince_tech$ ");
+		write(1, "prince_tech$ ", Cal_Str_Len("prince_tech$ "));
 		eofnum = getline(&buff, &n, stdin);
-		if (eofnum == -1) {
-			printf("Exiting...\n");
+		if (eofnum == -1) 
+		{
 			free(buff);
 			exit(EXIT_FAILURE);
 		}
@@ -29,7 +28,7 @@ int main()
 			exit(EXIT_FAILURE);
 		} else if (child_pid == 0) 
 		{
-			char *ecmd[1024];  /* Adjust the array size as needed*/
+			char *ecmd[100];  /* Adjust the array size as needed*/
 			int count = 0;
 
 			/* Tokenize the input command*/
@@ -44,12 +43,12 @@ int main()
 			cmd = path_present(ecmd[0]);  /*You need to implement path_present() to find the command path*/
 			if (execve(cmd, ecmd, environ) == -1) 
 			{
-				printf("%s: %d: %s: not found\n", argv[0], errorCount, ecmd[0]);
+				perror(execve);
 				exit(EXIT_FAILURE);
 			}
 			else
 			{
-				printf("Unknown Program: %d: %s: not found\n", errorCount, ecmd[0]);
+			_put("Unknown Program: %d: %s: not found\n", errorCount, ecmd[0]);
 			}
 		} 
 		else 

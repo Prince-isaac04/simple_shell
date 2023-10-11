@@ -7,10 +7,10 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <stdarg.h>
 
 
-
-void _put(char *c);
+void _put(const char *format, ...);
 
 /*get environ*/
 
