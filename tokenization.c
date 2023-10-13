@@ -1,5 +1,14 @@
 #include "shell.h"
 
+/**
+* token_instruction - Tokenizes and executes a specified instruction using fork and execvp
+* @tokener: Pointer to the string to be tokenized and executed
+* This function tokenizes the specified instruction and creates a child process to
+* execute it using the execvp system call. It waits for the child process to complete
+* before returning.
+* Return: None
+*/
+
 void token_instruction(char *tokener)
 {
         char *instruction = "ls";

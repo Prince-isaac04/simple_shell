@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+* enforce_instruction - Executes a specified instruction using fork and execvp
+* This function creates a child process to execute a specified instruction using
+* the execvp system call. It waits for the child process to complete before
+* Return: None
+*/
 void enforce_instruction()
 {
 	char *instruction = "ls";
