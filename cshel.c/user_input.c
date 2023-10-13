@@ -12,7 +12,7 @@
 
 void scan_instruction(char *instruct, size_t size)
 {
-    if (fgets(instruct, size, stdin) == NULL)
+    if (getline(instruct, size, stdin) == NULL)
     {
         if (feof(stdin))
         {

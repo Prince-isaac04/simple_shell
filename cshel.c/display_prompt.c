@@ -9,5 +9,5 @@
 
 void output_prompt(void)
 {
-    print_file("prince_tech$");
+    shell_print("prince_tech$");
 }
