@@ -12,7 +12,8 @@ int strn_cmp(const char *str1, const char *str2, size_t m)
         m--;
     }
 
-    if (m == 0) {
+    if (m == 0) 
+    {
         return 0;
     } else {
         return (*str1 - *str2);
