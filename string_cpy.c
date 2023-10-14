@@ -2,7 +2,9 @@
 
 void copStr(char *det, const char *sor)
 {
-    int i = 0;
+    int i;
+    
+    i = 0;
     while (sor[i] != '\0')
     {
         det[i] = sor[i];

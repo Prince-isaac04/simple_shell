@@ -15,5 +15,5 @@ char* dup_string(const char* input)
         }
         duplicateds[length] = '\0'; 
     }
-    return duplicateds;
+    return (duplicateds);
 }
