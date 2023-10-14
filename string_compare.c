@@ -1,21 +1,44 @@
 #include "shell.h"
 
-int strn_cmp(const char *str1, const char *str2, size_t m)
+int _strncmps(char *st1, char *st2)
 {
-    while (m > 0 && *str1 && *str2) 
+	int i;
+	int c = 0;
+
+	for (i = 0; st1[i] != '\0' && c == 0; i++)
+	{
+		c = st1[i] - st2[i];
+	}
+	return (c);
+}
+
+int _strncmp(const char *list1, const char *list2, size_t c) 
+{
+    while (*list1 != '\0' && *list2 != '\0' && c > 0) 
     {
-        if (*str1 != *str2) {
-            return (*str1 - *str2);
+        if (*list1 != *list2) 
+	{
+            return (*list1 > *list2) ? 1 : -1;
         }
-        str1++;
-        str2++;
-        m--;
+        list1++;
+        list2++;
+        c--;
     }
 
-    if (m == 0) 
+    if (c == 0) 
     {
         return 0;
-    } else {
-        return (*str1 - *str2);
+    } 
+    else if (*list1 == '\0' && *list2 == '\0')
+    {
+        return 0;
+    } 
+    else if (*list1 == '\0') {
+        return -1;
+    } 
+    else 
+    {
+        return 1;
     }
 }
+

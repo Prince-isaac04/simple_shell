@@ -12,10 +12,11 @@ char *get_path(char *path)
 
   while((path_env = *(env++)) != NULL)
   {
-    if (strn_cmp(path_env, path, Cal_Str_Len(path)) == 0)
+    if (_strncmp(*env, path, Cal_Str_Len(path)) == 0)
     {
       return (path_env);
     }
+    env++;
   }
   free(path_env);
   return (NULL);
@@ -41,8 +42,8 @@ char *path_present(const char *ecmd)
     copStr(fullPath, path_token);
     
     _strcat(fullPath, "/");
-    string_concat(fullPath, ecmd);
-    string_concat(fullPath, "\0");
+    _strcat(fullPath, ecmd);
+    _strcat(fullPath, "\0");
 
     if (access(fullPath, X_OK) == 0)
     {
