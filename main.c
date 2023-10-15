@@ -10,17 +10,19 @@
 extern char **environ;
 int main()
 {
-	int d;
+	/*char *argv[];*/
 	char *buff = NULL;
 	size_t n = 0;
 	ssize_t eofnum;
-	int errorCount = 1;
+	/*int errorCount = 1;*/
 	char *cmd;
 	char c = '\n';
 	char *token;
 	pid_t child_pid;
 	char *ecmd[100]; /* Adjust the array size as needed*/
 	int count = 0;
+	/*char *argv[] = {"ls", NULL};*/
+
 
 	while (1)
 	{
@@ -52,8 +54,8 @@ int main()
 			free(buff);
 			exit(EXIT_FAILURE);
 		}
+		cmd = path_present(ecmd[0]);
 		/* Remove the newline character from the end of the input*/
-
 
 		child_pid = fork();
 
@@ -62,24 +64,29 @@ int main()
 			free(buff);
 			exit(EXIT_FAILURE);
 		}
-		else if (child_pid == 0)
+		else if (child_pid == 0)        /*Execute the command using execve*/
 		{
-			/*Execute the command using execve*/
-			cmd = path_present(ecmd[0]); /*You need to implement path_present() to find the command path*/
-			printf("%s \n", cmd);
+
+
+			/*cmd = path_present(ecmd[0]);*/ /*You need to implement path_present() to find the command path*/
+
+			/*printf("%s \n", cmd);*/
+
 			if (execve(cmd, ecmd, NULL) == -1)
 			{
 				perror("Error");
 				exit(EXIT_FAILURE);
 			}
-			else
-			{       write(1, "command not found", Cal_Str_Len("command mot found"));
-			}
+			/*else
+			  {
+			  write(1, "command not found", Cal_Str_Len("command mot found"));
+		  }*/
 		}
 		else
 		{
-			wait(&d);
-			errorCount++;
+			wait(NULL);
+			continue;
+			/*errorCount++;*/
 			/*free(ecmd);*/
 		}
 	}

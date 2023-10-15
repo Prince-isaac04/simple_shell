@@ -1,6 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
-
+#include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -14,7 +14,7 @@
 
 char *get_path(char *path);
 
-char *path_present(const char *ecmd);
+char *path_present(char *ecmd);
 
 /*string function*/
 
@@ -29,5 +29,6 @@ void copStr(char *det, const char *sor);
 char* dup_string(const char* input);
 
 int _strncmp(const char *list1, const char *list2, size_t c);
+
 
 #endif

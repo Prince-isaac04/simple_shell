@@ -1,31 +1,43 @@
 #include "shell.h"
 
-extern char **environ;
+/**
+ * 
+ * 
+ * 
+*/
+/*extern char **environ;
 
 char *get_path(char *path)
 {
   char **env = environ;
-  char *path_env = malloc(Cal_Str_Len(path) + 1);
+  char *path_env = NULL;
 
-  if (path_env == NULL)
-    return (NULL);
+ 
 
-  while((path_env = *(env++)) != NULL)
+  while(*env != NULL)
   {
     if (_strncmp(*env, path, Cal_Str_Len(path)) == 0)
     {
+      path_env = *env;
       return (path_env);
     }
     env++;
   }
-  free(path_env);
+
   return (NULL);
+}*/
 
-}
 
-char *path_present(const char *ecmd)
+
+
+char *path_present(char *ecmd)
 {
-  char *path = get_path("PATH="), *path_dup = NULL;
+	char *path = "/bin/";
+	char *str = strdup(ecmd);
+	char *input = _strcat(path, str);
+	/*printf("%s", iknput);*/
+	return (input);
+  /*char *path = get_path("PATH="), *path_dup = NULL;
   char *path_token = NULL, *delim = ":", *fullPath = NULL;
 
   path_dup = dup_string(path);
@@ -35,7 +47,7 @@ char *path_present(const char *ecmd)
   path_token = strtok(path_dup, delim);
   while (path_token != NULL)
   {
-    fullPath = malloc(Cal_Str_Len(path_token) + Cal_Str_Len(ecmd) + 3);
+    fullPath = malloc(sizeof(char) * Cal_Str_Len(path_token) + Cal_Str_Len(ecmd) + 3);
     if (fullPath == NULL)
       return(NULL);
 
@@ -55,5 +67,5 @@ char *path_present(const char *ecmd)
     free(fullPath);
 
   }
-  return (NULL);
+  return (NULL);*/
 }
