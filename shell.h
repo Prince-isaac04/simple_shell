@@ -1,14 +1,15 @@
 #ifndef SHELL_H
 #define SHELL_H
-#include <sys/types.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
 #include <string.h>
-#include <stdarg.h>
-#include <stddef.h>
-
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
 
 /*get environ*/
 
@@ -29,6 +30,7 @@ void copStr(char *det, const char *sor);
 char* dup_string(const char* input);
 
 int _strncmp(const char *list1, const char *list2, size_t c);
-
+char *get_location(char *command);
+void execmd(char **argv);
 
 #endif
