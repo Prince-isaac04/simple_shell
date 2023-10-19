@@ -8,14 +8,14 @@
  */
 unsigned int is_del(char m, const char *strh)
 {
-unsigned int i;	
+	unsigned int i;	
 
-for (i = 0; strh[i] != '\0'; i++)
-{
-if (m == strh[i])
-return (1);
-}
-return (0);
+	for (i = 0; strh[i] != '\0'; i++)
+	{
+		if (m == strh[i])
+		return (1);
+	}
+	return (0);
 }
 
 /**
