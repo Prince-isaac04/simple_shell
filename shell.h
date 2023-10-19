@@ -47,7 +47,7 @@ void print_error(int count, char *uinput, char **argv);
 
 void file_red(char **argv, char *file);
 void file_treater(char *lines, int count, char **argv, FILE *fp);
-void exit_file_hand(FILE *fd, char **cmnd, char *lines,);
+void exit_file_hand(FILE *fd, char **cmnd, char *lines);
 
 
 char *builderss(char *value, char *tok);
