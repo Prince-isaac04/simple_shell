@@ -9,8 +9,8 @@ char **tokener(char *uinput)
 {
 	char *comm
 	char **cmdstring;
-	int buffsize = BUFSIZE;
 	int i;
+	int buffsize = BUFSIZE;
 
 	if (uinput[0] == ' ' && uinput[_strlen(uinput)] == ' ')
 		exit(0);
