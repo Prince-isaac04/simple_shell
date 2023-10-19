@@ -11,7 +11,9 @@ void file_red(char **argv, char *file)
 	FILE *lp;
 	char *lines = NULL;
 	size_t len = 0;
-	int count = 0;
+	int count;
+	
+	count = 0;
 
 	lp = fopen(file, "r");
 	if (lp == NULL)
