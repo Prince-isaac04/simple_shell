@@ -5,9 +5,9 @@
  */
 void env_helper(void)
 {
-	char *mesger = "env: env\n\tPrints the current environment.\n";
+char *mesger = "env: env\n\tPrints the current environment.\n";
 
-	write(STDOUT_FILENO, mesger, _strlen(mesger));
+write(STDOUT_FILENO, mesger, _strlen(mesger));
 }
 
 /**
