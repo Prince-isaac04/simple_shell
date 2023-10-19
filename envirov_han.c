@@ -7,11 +7,11 @@
 
 void enviro_line(char **environ)
 {
-	int i;
+int i;
 
-	for (i = 0; environ[i]; i++)
-		environ[i] = _strdup(environ[i]);
-	enviro[i] = NULL;
+for (i = 0; environ[i]; i++)
+	environ[i] = _strdup(environ[i]);
+enviro[i] = NULL;
 }
 
 /**
