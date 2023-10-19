@@ -18,7 +18,7 @@ void file_red(char **argv, char *file)
 	lp = fopen(file, "r");
 	if (lp == NULL)
 	{
-		error_file(argv, count);
+		error_files(argv, count);
 		exit(127);
 	}
 	while ((getline(&lines, &len, fp)) != -1)
