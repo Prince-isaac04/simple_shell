@@ -15,7 +15,9 @@ int is_builtin(char **cmnd)
 		{"history", NULL},
 		{NULL, NULL}
 	};
-	int i = 0;
+	int i;
+	
+	i = 0;
 
 	if (*cmnd == NULL)
 	{
