@@ -5,7 +5,7 @@
  */
 void all_help(void)
 {
-	char *mesgde = "Shellby\nThese shell commands are defined internally.\n";
+char *mesgde = "Shellby\nThese shell commands are defined internally.\n";
 
 	write(STDOUT_FILENO, mesgde, _strlen(mesgde));
 	mesgde = "Type 'help' to see this list.\nType 'help name' to find ";
