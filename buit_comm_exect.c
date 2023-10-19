@@ -9,8 +9,8 @@
  */
 int change_dirt(char **cmnds, __attribute__((unused))int str)
 {
-	int vals = -1;
-	char cwdz[PATH_MAX];
+int vals = -1;
+char cwdz[PATH_MAX];
 
 	if (cmnds[1] == NULL)
 		vals = chdir(getenv("HOME"));
