@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 c-shell project
 
 Write a UNIX command line interpreter
@@ -10,3 +11,6 @@ You are not allowed to use strtok
 handle arguments for the built-in exit
 Implement the setenv and unsetenv builtin commands
 Implement the builtin command cd
+=======
+c shell ooo
+>>>>>>> 78e1d8bc9545304ebaf752177af6320cbd01f2cf

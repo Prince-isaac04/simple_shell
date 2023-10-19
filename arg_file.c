@@ -18,7 +18,7 @@ void file_red(char **argv, char *file)
 	lp = fopen(file, "r");
 	if (lp == NULL)
 	{
-		error_file(argv, count);
+		error_files(argv, count);
 		exit(127);
 	}
 	while ((getline(&lines, &len, fp)) != -1)
@@ -45,7 +45,7 @@ void file_treater(char *lines, int count, char **argv, FILE *fp)
 	char **cmnd;
 	stater = 0;
 
-	cmnd = parse_cmd(lines);
+	cmnd = parse_cmdss(lines);
 	if (_strncmp(cmnd[0], "exit", 4) == 0)
 		exit_file_hand(cmnd, lines, fp);
 	else if (is_builtin(cmnd) == 0)
