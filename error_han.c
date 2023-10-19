@@ -9,7 +9,7 @@
 
 void print_error(int count, char *uinput, char **argv)
 {
-	char *pev;
+char *pev;
 
 	PRINT(argv[0]);
 	PRINT(": ");
