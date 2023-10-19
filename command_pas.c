@@ -9,8 +9,8 @@ char **parse_cmdss(char *inp)
 {
 	char **argmtscc;
 	char *argumentcc;
-	int i;
 	int buff = BUFSIZE;
+	int i;
 
 	if (input[0] == ' ' && input[_strlen(inp)] == ' ')
 		exit(0);
