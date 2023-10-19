@@ -8,29 +8,29 @@
  */
 int main(__attribute__((unused)) int argc, char **argv)
 {
-	char *userinput, **cmd, **commands;
+	char *uinput, **cmd, **commands;
 	int count = 0, i, condition = 1, stat = 0;
 
 	if (argv[1] != NULL)
 		file_read(argv[1], argv);
-	signal(SIGINT, signal_to_handle);
+	signal(SIGINT, signa_to_handles);
 	while (condition)
 	{
 		count++;
 		if (isatty(STDIN_FILENO))
 			prompt();
-		userinput = _getline();
-		if (userinput[0] == '\0')
+		uinput = _getline();
+		if (uinput[0] == '\0')
 			continue;
-		history(userinput);
-		commands = tokenizer(userinput);
+		histor(usinput);
+		commands = tokener(uinput);
 		for (i = 0; commands[i] != NULL; i++)
 		{
-			cmd = parse_cmd(commands[i]);
+			cmd = parse_cmdss(commands[i]);
 			if (_strcmp(cmd[0], "exit") == 0)
 			{
 				free(commands);
-				exit_bul(cmd, userinput, argv, count, stat);
+				exit_bul(cmd, uinput, argv, count, stat);
 			}
 			else if (is_builtin(cmd) == 0)
 			{
@@ -39,10 +39,10 @@ int main(__attribute__((unused)) int argc, char **argv)
 				continue;
 			}
 			else
-				stat = check_cmd(cmd, userinput, count, argv);
+				stat = check_cmd(cmd, uinput, count, argv);
 			free(cmd);
 		}
-		free(userinput);
+		free(uinput);
 		free(commands);
 		wait(&stat);
 	}
