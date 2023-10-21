@@ -114,7 +114,7 @@ int is_builtis(char **cmnd);
 int han_builtis(char **cmd, int st);
 void leave_bul(char **cmnd, char *input, char **argv, int z, int stat);
 int change_dirt(char **cmnd, __attribute__((unused))int st);
-int env_dis(__attribute__((unused)) char **cnd, __attribute__((unused)) int st);
+int env_dis(__attribute__((unused))char **cnd, __attribute__((unused)) int st);
 int see_bul(char **cmnd, int st);
 int hist_dis(__attribute__((unused))char **a, __attribute__((unused)) int st);
 

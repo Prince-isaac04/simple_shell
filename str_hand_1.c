@@ -58,7 +58,7 @@ char *_strchr(char *t, char f)
 			break;
 		}
 	}
-	while (*t++)
+	while (*t++);
 		return (t);
 }
 
