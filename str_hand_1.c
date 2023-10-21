@@ -2,82 +2,83 @@
 
 /**
  * _strcpy - function that copies a string
- * @dest: destination
- * @src: source
+ * @de: destination
+ * @srh: source
  * Return: destination
  */
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *de, char *srh)
 {
-	int i = 0;
+	int v = 0;
 
-	while (src[i])
+	while (srh[v])
 	{
-		dest[i] = src[i];
-		i++;
+		de[v] = srh[v];
+		v++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	de[v] = '\0';
+	return (de);
 }
 
 /**
  * _strcat - function that concatenates two strings
- * @dest: first string
- * @src: second string
+ * @de: first string
+ * @srh: second string
  * Return: first string + second string
  */
-char *_strcat(char *dest, char *src)
+char *_strcat(char *de, char *srh)
 {
-	char *z = dest;
+	char *out = de;
 
-	while (*dest != '\0')
+	while (*de != '\0')
 	{
-		dest++;
+		de++;
 	}
 
-	while (*src != '\0')
+	while (*srh != '\0')
 	{
-		*dest = *src;
-		dest++;
-		src++;
+		*de = *srh;
+		de++;
+		srh++;
 	}
-	*dest = '\0';
-	return (z);
+	*de = '\0';
+	return (out);
 }
 
 /**
  * _strchr - function that locates character in a string
- * @z: string to be searched
- * @a: character to be located
+ * @t: string to be searched
+ * @f: character to be located
  * Return: pointer to character
  */
-char *_strchr(char *z, char a)
+char *_strchr(char *t, char f)
 {
 	do {
-		if (*z == a)
+		if (*t == f)
 		{
 			break;
 		}
-	} while (*z++);
-	return (z);
+	} 
+	while (*t++);
+	return (t);
 }
 
 /**
  * _strncmp - function that compares n amount of characters of two strings
- * @str1: first string
- * @str2: second string
- * @z: amount of characters to compare
+ * @str0: first string
+ * @str1: second string
+ * @h: amount of characters to compare
  * Return: 1 if the strings don't match otherwise 0
- */
-int _strncmp(const char *str1, const char *str2, size_t z)
+i */
+int _strncmp(const char *str0, const char *str1, size_t h)
 {
-	size_t i;
+	size_t b;
 
 	if (str1 == NULL)
 		return (-1);
 
-	for (i = 0; i < z && str2[i]; i++)
+	for (b = 0; b < h && str1[b]; b++)
 	{
-		if (str1[i] != str2[i])
+		if (str0[b] != str1[b])
 		{
 			return (1);
 		}
@@ -87,23 +88,23 @@ int _strncmp(const char *str1, const char *str2, size_t z)
 
 /**
  * _strdup - duplicate a string
- * @str: string
+ * @sth: string
  * Return: duplicated string or Null if failed
  */
-char *_strdup(char *str)
+char *_strdup(char *sth)
 {
-	size_t len, i;
-	char *str2;
+	size_t let, v;
+	char *str3;
 
-	len = _strlen(str);
-	str2 = malloc(sizeof(char) * (len + 1));
-	if (!str2)
+	let = _strlen(sth);
+	str3 = malloc(sizeof(char) * (let + 1));
+	if (! str3)
 	{
 		return (NULL);
 	}
-	for (i = 0; i <= len; i++)
+	for (v = 0; v <= let; v++)
 	{
-		str2[i] = str[i];
+		str3[v] = sth[v];
 	}
-	return (str2);
+	return (str3);
 }

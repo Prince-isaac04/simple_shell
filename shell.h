@@ -31,11 +31,11 @@ int _isalpha(int z);
 void array_rev(char *arr, int len);
 int intlen(int num);
 char *_itoa(unsigned int z);
-char *_strcat(char *dest, char *src);
-char *_strcpy(char *dest, char *src);
-char *_strchr(char *z, char a);
-int _strncmp(const char *str1, const char *str2, size_t z);
-char *_strdup(char *str);
+char *_strcat(char *de, char *srh);
+char *_strcpy(char *de, char *srh);
+char *_strchr(char *t, char f);
+int _strncmp(const char *str2, const char *str1, size_t y);
+char *_strdup(char *strv);
 
 /*********** MEMORY HANDLERS ***********/
 

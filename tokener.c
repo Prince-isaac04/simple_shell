@@ -7,7 +7,7 @@
  */
 char **tokener(char *uinput)
 {
-	char *comm
+	char *comm;
 	char **cmdstring;
 	int i;
 	int buffsize = BUFSIZE;
@@ -24,7 +24,7 @@ char **tokener(char *uinput)
 		return (NULL);
 	}
 	comm = _strtok(uinput, ";&\n");
-	for (i = 0; command; i++)
+	for (i = 0; cmdstring; i++)
 	{
 		cmdstring[i] = comm;
 		comm = _strtok(NULL, ";&\n");
