@@ -2,28 +2,29 @@
 
 /**
  * _strcmp - function that compares two string
- * @str1: first string
- * @str2: second string
+ * @sty1: first string
+ * @sty2: second string
  * Return: 0 if identical otherwise how much diffrent
  */
-int _strcmp(char *str1, char *str2)
+int _strcmp(char *sty1, char *sty2)
 {
-	int cmp = 0, i, len1, len2;
+	int cmp = 0, i;
+	int len1, len2;
 
-	len1 = _strlen(str1);
-	len2 = _strlen(str2);
+	len1 = _strlen(sty1);
+	len2 = _strlen(sty2);
 
-	if (str1 == NULL || str2 == NULL)
+	if (sty1 == NULL || sty2 == NULL)
 		return (1);
 
 	if (len1 != len2)
 		return (1);
 
-	for (i = 0; str1[i]; i++)
+	for (i = 0; sty1[i]; i++)
 	{
-		if (str1[i] != str2[i])
+		if (sty1[i] != sty2[i])
 		{
-			cmp = str1[i] - str2[i];
+			cmp = sty1[i] - sty2[i];
 			break;
 		}
 		else
@@ -35,12 +36,12 @@ int _strcmp(char *str1, char *str2)
 
 /**
  * _isalpha - function to check if c is alphabet
- * @z: character to check
+ * @m: character to check
  * Return: 1 if true 0 if false
  */
-int _isalpha(int z)
+int _isalpha(int m)
 {
-	if (((z >= 97) && (z <= 122)) || ((z >= 65) && (z <= 90)))
+	if (((m >= 97) && (m <= 122)) || ((m >= 65) && (m <= 90)))
 	{
 		return (1);
 	}
@@ -52,15 +53,16 @@ int _isalpha(int z)
 
 /**
  * _itoa - funciton that convert integer to character
- * @z: integer to convert
+ * @m: integer to convert
  * Return: character pointer
  */
-char *_itoa(unsigned int z)
+char *_itoa(unsigned int m)
 {
-	int len = 0, i = 0;
+	int v = 0;
+	int len = 0;
 	char *s;
 
-	len = intlen(z);
+	len = intlen(m);
 	s = malloc(len + 2);
 
 	if (!s)
@@ -70,35 +72,35 @@ char *_itoa(unsigned int z)
 	}
 	*s = '\0';
 
-	while (z / 10)
+	while (m / 10)
 	{
-		s[i] = (z % 10) + '0';
-		z /= 10;
-		i++;
+		s[v] = (m % 10) + '0';
+		m /= 10;
+		v++;
 	}
 
-	s[i] = (z % 10) + '0';
+	s[v] = (m % 10) + '0';
 	array_rev(s, len);
-	s[i + 1] = '\0';
+	s[v + 1] = '\0';
 
 	return (s);
 }
 
 /**
  * array_rev - function reverse an array
- * @arr: array to reverse
+ * @arry: array to reverse
  * @len: length of array
  */
-void array_rev(char *arr, int len)
+void array_rev(char *arry, int len)
 {
-	int i;
-	char tmp;
+	int v;
+	char tmpt;
 
-	for (i = 0; i < (len / 2); i++)
+	for (v = 0; v < (len / 2); v++)
 	{
-		tmp = arr[i];
-		arr[i] = arr[(len - 1) - i];
-		arr[(len - 1) - i] = tmp;
+		tmpt = arry[v];
+		arry[v] = arry[(len - 1) - v];
+		arry[(len - 1) - v] = tmpt;
 	}
 }
 
@@ -107,14 +109,14 @@ void array_rev(char *arr, int len)
  * @num: given integer
  * Return: length of integer
  */
-int intlen(int num)
+int intlen(int numb)
 {
 	int len = 0;
 
-	while (num != 0)
+	while (numb != 0)
 	{
 		len++;
-		num /= 10;
+		numb /= 10;
 	}
 	return (len);
 }

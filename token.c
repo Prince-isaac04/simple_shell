@@ -1,20 +1,20 @@
 #include "shell.h"
 
 /**
- * tokenizer - Separates command recieved from stdin by ;
- * @usrinput: String gathered from stdin
+ * tokener - Separates command recieved from stdin by ;
+ * @uinput: String gathered from stdin
  * Return: Parsed strings to be used as commands
  */
-char **tokener(char *usrinput)
+char **tokener(char *uinput)
 {
 	char **cmdstring;
-	char *command;
-	int i;
+	char *comm;
+	int v;
 	int buffsize = BUFSIZE;
 
-	if (usrinput[0] == ' ' && usrinput[_strlen(usrinput)] == ' ')
+	if (uinput[0] == ' ' && uinput[_strlen(uinput)] == ' ')
 		exit(0);
-	if (usrinput == NULL)
+	if (uinput == NULL)
 		return (NULL);
 	cmdstring = malloc(sizeof(char *) * buffsize);
 	if (!cmdstring)
@@ -23,13 +23,13 @@ char **tokener(char *usrinput)
 		perror("hsh");
 		return (NULL);
 	}
-	command = _strtok(usrinput, ";&\n");
-	for (i = 0; command; i++)
+	comm = _strtok(uinput, ";&\n");
+	for (v = 0; comm; v++)
 	{
-		cmdstring[i] = command;
-		command = _strtok(NULL, ";&\n");
+		cmdstring[v] = comm;
+		comm = _strtok(NULL, ";&\n");
 	}
-	cmdstring[i] = NULL;
+	cmdstring[v] = NULL;
 
 	return (cmdstring);
 }

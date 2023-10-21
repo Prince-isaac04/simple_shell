@@ -26,16 +26,16 @@ int _strlen(char *m);
 int _putchar(char f);
 int _atoi(char *f);
 void _puts(char *sth);
-int _strcmp(char *str1, char *str2);
-int _isalpha(int z);
-void array_rev(char *arr, int len);
-int intlen(int num);
-char *_itoa(unsigned int z);
+int _strcmp(char *sty1, char *sty2);
+int _isalpha(int m);
+void array_rev(char *arry, int len);
+int intlen(int numb);
+char *_itoa(unsigned int m);
 char *_strcat(char *de, char *srh);
 char *_strcpy(char *de, char *srh);
 char *_strchr(char *t, char f);
-int _strncmp(const char *str2, const char *str1, size_t y);
-char *_strdup(char *strv);
+int _strncmp(const char *str0, const char *str1, size_t h);
+char *_strdup(char *strh);
 
 /*********** MEMORY HANDLERS ***********/
 
@@ -53,8 +53,8 @@ char *spacess(char *strm);
 char *insert(char *strn);
 void hashtag_hands(char *buffar);
 void prompt(void);
-unsigned int is_delimin(char c, const char *str);
-char *_strtok(char *str1, const char *delim);
+unsigned int is_delimin(char m, const char *sty);
+char *_strtok(char *sty1, const char *del);
 int histor(char *uinput);
 char **tokener(char *uinput);
 

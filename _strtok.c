@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * is_delim - function that checks if a character matchs any character
- * @c: character to check
- * @str: string of delimiters
+ * is_delimin - function that checks if a character matchs any character
+ * @m: character to check
+ * @sty: string of delimiters
  * Return: 1 on success, 0 on failure
  */
-unsigned int is_delimin(char c, const char *str)
+unsigned int is_delimin(char m, const char *sty)
 {
 	unsigned int i;
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; sty[i] != '\0'; i++)
 	{
-		if (c == str[i])
+		if (m == sty[i])
 			return (1);
 	}
 	return (0);
@@ -20,46 +20,46 @@ unsigned int is_delimin(char c, const char *str)
 
 /**
  * _strtok - function that extracts tokens of a string
- * @str1: string
- * @delim: delimiter
+ * @sty1: string
+ * @del: delimiter
  * Return: pointer to the next token or NULL
  */
-char *_strtok(char *str1, const char *delim)
+char *_strtok(char *sty1, const char *del)
 {
-	static char *toks;
-	static char *ntoks;
+	static char *tok;
+	static char *mtoks;
 	unsigned int i;
 
-	if (str1 != NULL)
-		ntoks = str1;
-	toks = ntoks;
-	if (toks == NULL)
+	if (sty1 != NULL)
+		mtoks = sty1;
+	tok = mtoks;
+	if (tok == NULL)
 		return (NULL);
-	for (i = 0; toks[i] != '\0'; i++)
+	for (i = 0; tok[i] != '\0'; i++)
 	{
-		if (is_delimin(toks[i], delim) == 0)
+		if (is_delimin(tok[i], del) == 0)
 			break;
 	}
-	if (ntoks[i] == '\0' || ntoks[i] == '#')
+	if (mtoks[i] == '\0' || mtoks[i] == '#')
 	{
-		ntoks = NULL;
+		mtoks = NULL;
 		return (NULL);
 	}
-	toks = ntoks + i;
-	ntoks = toks;
-	for (i = 0; ntoks[i] != '\0'; i++)
+	tok = mtoks + i;
+	mtoks = tok;
+	for (i = 0; mtoks[i] != '\0'; i++)
 	{
-		if (is_delimin(ntoks[i], delim) == 1)
+		if (is_delimin(mtoks[i], del) == 1)
 			break;
 	}
-	if (ntoks[i] == '\0')
-		ntoks = NULL;
+	if (mtoks[i] == '\0')
+		mtoks = NULL;
 	else
 	{
-		ntoks[i] = '\0';
-		ntoks = ntoks + i + 1;
-		if (*ntoks == '\0')
-			ntoks = NULL;
+		mtoks[i] = '\0';
+		mtoks = mtoks + i + 1;
+		if (*mtoks == '\0')
+			mtoks = NULL;
 	}
-	return (toks);
+	return (tok);
 }
