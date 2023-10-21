@@ -35,7 +35,7 @@ void displ_number_int(int y)
 
 /**
  * echo_printer_pro - Executes built-in echo function
- * @cmn: Parsed Command
+ * @cmns: Parsed Command
  * Return: 0 Upon Success -1 Upon Failure
  */
 int echo_printer_pro(char **cmns)

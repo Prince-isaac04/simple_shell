@@ -41,7 +41,7 @@ void error_doc(char **argv, int s)
 
 
 /**
- *  _pas_error - Prints custom Error
+ *  _pas_rerror - Prints custom Error
  * @argv: Arguments before program starts(argv[0] == Shell Program Name)
  * @s: Error Count
  * @cmn: Array of parsed command strings

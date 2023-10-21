@@ -57,18 +57,20 @@ char *_strchr(char *t, char f)
 		{
 			break;
 		}
-	} 
-	while (*t++);
-	return (t);
+	}
+	while (*t++)
+	{
+		return (t);
+	}
 }
 
 /**
- * _strncmp - function that compares n amount of characters of two strings
+ * _strncmp - function that compares n amount of characters of two strig
  * @str0: first string
  * @str1: second string
  * @h: amount of characters to compare
  * Return: 1 if the strings don't match otherwise 0
-i */
+ */
 int _strncmp(const char *str0, const char *str1, size_t h)
 {
 	size_t b;
@@ -98,7 +100,7 @@ char *_strdup(char *sth)
 
 	let = _strlen(sth);
 	str3 = malloc(sizeof(char) * (let + 1));
-	if (! str3)
+	if (!str3)
 	{
 		return (NULL);
 	}

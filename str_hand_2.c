@@ -106,7 +106,7 @@ void array_rev(char *arry, int len)
 
 /**
  * intlen - function that determine length of integer
- * @num: given integer
+ * @numb: given integer
  * Return: length of integer
  */
 int intlen(int numb)

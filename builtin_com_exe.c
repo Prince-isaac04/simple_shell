@@ -35,12 +35,12 @@ int change_dirt(char **cmn, __attribute__((unused))int st)
 }
 
 /**
- * enve_disp - Display enviroment variable
+ * env_dis - Display enviroment variable
  * @cnd: parsed command
  * @st: status of last command executed
  * Return: Always 0
  */
-int enve_disp(__attribute__((unused)) char **cnd, __attribute__((unused)) int st)
+int env_dis(__attribute__((unused)) char **cnd, __attribute__((unused)) int st)
 {
 	size_t v;
 	int le;

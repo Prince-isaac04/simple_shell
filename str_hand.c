@@ -74,7 +74,7 @@ int _strlen(char *m)
 int _atoi(char *f)
 {
 	int v = 0;
-	int k = 1; 
+	int k = 1;
 	int x;
 	unsigned int l = 0;
 

@@ -6,7 +6,7 @@
  */
 char *_getlin()
 {
-	int s; 
+	int s;
 	int buffsize = BUFSIZE;
 	int ld;
 	char a = 0, *buffed, *buff;
@@ -48,7 +48,7 @@ char *_getlin()
 
 /**
  * insert - Handles newline character input
- * @strn String to be handled
+ * @strn: String to be handled
  * Return: Empty string
  */
 char *insert(char *strn)
@@ -64,7 +64,7 @@ char *insert(char *strn)
  */
 char *spacess(char *strm)
 {
-	int s; 
+	int s;
 	int j = 0;
 	char *buffar;
 

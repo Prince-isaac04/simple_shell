@@ -40,7 +40,7 @@ int han_builtis(char **cmn, int sts)
 {
 	builtin built_is[] = {
 		{"cd", change_dirt},
-		{"env", enve_disp},
+		{"env", env_dis},
 		{"help", displayenvro_helper},
 		{"echo", see_bul},
 		{"history", hist_dis},

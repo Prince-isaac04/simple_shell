@@ -73,7 +73,7 @@ char *_memocpyes(char *d, char *srv, unsigned int m)
  * put_array - fill an array by constant byte
  *@l: void pointer
  *@y: int
- *@l: length for int
+ *@ln: length for int
  *Return: void pointer
  */
 void *put_array(void *l, int y, unsigned int ln)
@@ -92,7 +92,7 @@ void *put_array(void *l, int y, unsigned int ln)
 
 /**
  * _calloces - allocates memory for an array using malloc
- *@siz size
+ *@siz: size
  *Return: void pointer
  */
 void *_calloces(unsigned int siz)
