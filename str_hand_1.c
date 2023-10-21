@@ -52,18 +52,20 @@ char *_strcat(char *de, char *srh)
  */
 char *_strchr(char *t, char f)
 {
-	do {
+	while (*t != '\0')
+	{
 		if (*t == f)
 		{
-			break;
+			return (t);
 		}
+		t++;
 	}
-	while (*t++);
-		return (t);
+	return (NULL);
 }
 
+
 /**
- * _strncmp - function that compares n amount of characters of two strig
+ * _strncmp - function that compares n amount of characters of two st
  * @str0: first string
  * @str1: second string
  * @h: amount of characters to compare
