@@ -8,8 +8,7 @@
  */
 int _strcmp(char *str1, char *str2)
 {
-	int cmps = 0;
-	int i, len1, len2;
+	int cmp = 0, i, len1, len2;
 
 	len1 = _strlen(str1);
 	len2 = _strlen(str2);
@@ -24,7 +23,7 @@ int _strcmp(char *str1, char *str2)
 	{
 		if (str1[i] != str2[i])
 		{
-			cmps = str1[i] - str2[i];
+			cmp = str1[i] - str2[i];
 			break;
 		}
 		else
@@ -39,9 +38,9 @@ int _strcmp(char *str1, char *str2)
  * @z: character to check
  * Return: 1 if true 0 if false
  */
-int _isalpha(int m)
+int _isalpha(int z)
 {
-	if (((m >= 97) && (m <= 122)) || ((m >= 65) && (m <= 90)))
+	if (((z >= 97) && (z <= 122)) || ((z >= 65) && (z <= 90)))
 	{
 		return (1);
 	}
@@ -56,12 +55,12 @@ int _isalpha(int m)
  * @z: integer to convert
  * Return: character pointer
  */
-char *_itoa(unsigned int v)
+char *_itoa(unsigned int z)
 {
 	int len = 0, i = 0;
 	char *s;
 
-	len = intlen(v);
+	len = intlen(z);
 	s = malloc(len + 2);
 
 	if (!s)
@@ -71,14 +70,14 @@ char *_itoa(unsigned int v)
 	}
 	*s = '\0';
 
-	while (v / 10)
+	while (z / 10)
 	{
-		s[i] = (v % 10) + '0';
+		s[i] = (z % 10) + '0';
 		z /= 10;
 		i++;
 	}
 
-	s[i] = (v % 10) + '0';
+	s[i] = (z % 10) + '0';
 	array_rev(s, len);
 	s[i + 1] = '\0';
 
@@ -90,15 +89,32 @@ char *_itoa(unsigned int v)
  * @arr: array to reverse
  * @len: length of array
  */
-void array_rev(char *arr, int lens)
+void array_rev(char *arr, int len)
 {
 	int i;
-	char me;
+	char tmp;
 
-	for (i = 0; i < (lens / 2); i++)
+	for (i = 0; i < (len / 2); i++)
 	{
-		me = arr[i];
-		arr[i] = arr[(lens - 1) - i];
-		arr[(lens - 1) - i] = me;
+		tmp = arr[i];
+		arr[i] = arr[(len - 1) - i];
+		arr[(len - 1) - i] = tmp;
 	}
+}
+
+/**
+ * intlen - function that determine length of integer
+ * @num: given integer
+ * Return: length of integer
+ */
+int intlen(int num)
+{
+	int len = 0;
+
+	while (num != 0)
+	{
+		len++;
+		num /= 10;
+	}
+	return (len);
 }

@@ -1,66 +1,66 @@
 #include "shell.h"
 
 /**
- * print_num - Prints unsigned integers using _putchar function
- * @m: Unsigned integer to be printed
+ * disp_number - Prints unsigned integers using _putchar function
+ * @g: Unsigned integer to be printed
  */
-void print_num(unsigned int m)
+void disp_number(unsigned int g)
 {
-	unsigned int x = m;
+	unsigned int v = g;
 
-	if ((x / 10) > 0)
-		print_num(x / 10);
+	if ((v / 10) > 0)
+		disp_number(v / 10);
 
-	_putchar(x % 10 + '0');
+	_putchar(v % 10 + '0');
 }
 
 /**
- * print_number_int - Prints integers using _putchar function
- * @z: Integer to be printed
+ * displ_number_int - Prints integers using _putchar function
+ * @y: Integer to be printed
  */
-void print_number_inter(int y)
+void displ_number_int(int y)
 {
-	unsigned int x = y;
+	unsigned int g = y;
 
 	if (y < 0)
 	{
 		_putchar('-');
-		x = -x;
+		g = -g;
 	}
-	if ((x / 10) > 0)
-		print_number(x / 10);
+	if ((g / 10) > 0)
+		disp_number(g / 10);
 
-	_putchar(x % 10 + '0');
+	_putchar(g % 10 + '0');
 }
 
 /**
- * e_printer - Executes built-in echo function
- * @cmnd: Parsed Command
+ * echo_printer_pro - Executes built-in echo function
+ * @cmn: Parsed Command
  * Return: 0 Upon Success -1 Upon Failure
  */
-int e_printer(char **cmnd)
+int echo_printer_pro(char **cmns)
 {
-	pid_t sepid;
-	int status;
+	pid_t seyipid;
+	int st;
 
-	sepid = fork();
-	if (sepid == 0)
+	seyipid = fork();
+	if (seyipid == 0)
 	{
-		if (execve("/bin/echo", cmnd, environ) == -1)
+		if (execve("/bin/echo", cmns, environ) == -1)
 		{
 			return (-1);
 		}
 		exit(EXIT_FAILURE);
 	}
-	else if (sepid < 0)
+	else if (seyipid < 0)
 	{
 		return (-1);
 	}
 	else
 	{
 		do {
-			waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+			waitpid(seyipid, &st, WUNTRACED);
+		} while (!WIFEXITED(st) && !WIFSIGNALED(st));
 	}
 	return (1);
 }

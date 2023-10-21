@@ -1,63 +1,63 @@
 #include "shell.h"
 
 /**
- * print_errors - Displays error message
+ * paste_error - Displays error message
  * @uinput: Input recieved from user
- * @count: Count of shell loop
+ * @cou: Count of shell loop
  * @argv: Arguments before program starts(argv[0] == Shell Program Name)
  */
 
-void print_error(int count, char *uinput, char **argv)
+void paste_error(char *uinput, int cou, char **argv)
 {
-char *pev;
+	char *pe;
 
 	PRINT(argv[0]);
 	PRINT(": ");
-	per = _itoa(count);
-	PRINT(pev);
-	free(pev);
+	pe = _itoa(cou);
+	PRINT(pe);
+	free(pe);
 	PRINT(": ");
 	PRINT(uinput);
 	PRINT(": not found\n");
 }
 
 /**
- * error_files - Prints custom Error
+ * error_doc - Prints custom Error
  * @argv: Arguments before program starts(argv[0] == Shell Program Name)
- * @z: Error Count
+ * @s: Error Count
  */
-void error_files(int z, char **argv)
+void error_doc(char **argv, int s)
 {
-	char *ve = _itoa(z);
+	char *no = _itoa(s);
 
 	PRINT(argv[0]);
 	PRINT(": ");
-	PRINT(ve);
+	PRINT(no);
 	PRINT(": Can't open ");
 	PRINT(argv[1]);
 	PRINT("\n");
-	free(ve);
+	free(no);
 }
 
 
 /**
- *  _prerror - Prints custom Error
+ *  _pas_error - Prints custom Error
  * @argv: Arguments before program starts(argv[0] == Shell Program Name)
- * @z: Error Count
- * @cmnd: Array of parsed command strings
+ * @s: Error Count
+ * @cmn: Array of parsed command strings
  */
 
-void _prerrors(int z, char **cmnd, char **argv)
+void _pas_rerror(char **argv, int s, char **cmn)
 {
-	char *ve = _itoa(z);
+	char *e = _itoa(s);
 
 	PRINT(argv[0]);
 	PRINT(": ");
-	PRINT(ve);
+	PRINT(e);
 	PRINT(": ");
-	PRINT(cmnder[0]);
+	PRINT(cmn[0]);
 	PRINT(": Illegal number: ");
-	PRINT(cmnder[1]);
+	PRINT(cmn[1]);
 	PRINT("\n");
-	free(ve);
+	free(e);
 }

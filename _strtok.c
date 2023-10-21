@@ -1,65 +1,65 @@
 #include "shell.h"
 
 /**
- * is_del - function that checks if a character matchs any character
- * @m: character to check
- * @strh: string of delimiters
+ * is_delimin - function that checks if a character matchs any character
+ * @v: character to check
+ * @sth: string of delimiters
  * Return: 1 on success, 0 on failure
  */
-unsigned int is_del(char m, const char *strh)
+unsigned int is_delimin(char v, const char *sth)
 {
-	unsigned int i;	
+	unsigned int g;
 
-	for (i = 0; strh[i] != '\0'; i++)
+	for (g = 0; sth[g] != '\0'; g++)
 	{
-		if (m == strh[i])
-		return (1);
+		if (v == sth[g])
+			return (1);
 	}
 	return (0);
 }
 
 /**
  * _strtok - function that extracts tokens of a string
- * @strh: string
- * @delims: delimiter
+ * @str1: string
+ * @delim: delimiter
  * Return: pointer to the next token or NULL
  */
-char *_strtok(char *strh, const char *delims)
+char *_strtok(char *str0, const char *de)
 {
-	static char *toks;
-	static char *ntoks;
-	unsigned int s;
+	static char *ctoks;
+	static char *tokss;
+	unsigned int v;
 
-	if (strh != NULL)
-		ntoks = strh;
-	toks = ntoks;
-	if (toks == NULL)
+	if (str0 != NULL)
+		ctoks = str0;
+	tokss = ctoks;
+	if (tokss == NULL)
 		return (NULL);
-	for (s = 0; toks[s] != '\0'; s++)
+	for (v = 0; tokss[v] != '\0'; v++)
 	{
-		if (is_del(toks[s], delims) == 0)
+		if (is_delimin(tokss[v], de) == 0)
 			break;
 	}
-	if (ntoks[s] == '\0' || ntoks[s] == '#')
+	if (ctoks[v] == '\0' || ctoks[v] == '#')
 	{
-		ntoks = NULL;
+		ctoks = NULL;
 		return (NULL);
 	}
-	toks = ntoks + s;
-	ntoks = toks;
-	for (s = 0; ntoks[s] != '\0'; s++)
+	tokss = ctoks + v;
+	ctoks = tokss;
+	for (v = 0; ctoks[v] != '\0'; v++)
 	{
-		if (is_del(ntoks[s], delims) == 1)
+		if (is_delimin(ctoks[v], de) == 1)
 			break;
 	}
-	if (ntoks[s] == '\0')
-		ntoks = NULL;
+	if (ctoks[v] == '\0')
+		ctoks = NULL;
 	else
 	{
-		ntoks[s] = '\0';
-		ntoks = ntoks + s + 1;
-		if (*ntoks == '\0')
-			ntoks = NULL;
+		ctoks[v] = '\0';
+		ctoks = ctoks + v + 1;
+		if (*ctoks == '\0')
+			ctoks = NULL;
 	}
-	return (toks);
+	return (tokss);
 }

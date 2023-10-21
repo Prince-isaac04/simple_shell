@@ -1,16 +1,16 @@
 #include "shell.h"
 
 /**
- * see_cmd - Excutes commands found in predefined path
+ * check_cmd - Excutes commands found in predefined path
  * @cmd: Array of parsed command strings
- * @uinput: Input recieved from user (to be freed)
+ * @userinput: Input recieved from user (to be freed)
  * @a:Shell Excution Time Case of Command Not Found
  * @argv: Arguments before program starts(argv[0] == Shell Program Name)
  * Return: 1 Case Command Null -1 Wrong Command 0 Command Excuted
  */
-int see_cmd(char **argv, char **cmd, char *uinput, int a)
+int check_cmd(char **cmd, char *userinput, int a, char **argv)
 {
-	int sws;
+	int wstatus;
 	pid_t pid;
 
 	if (*cmd == NULL)
@@ -27,8 +27,8 @@ int see_cmd(char **argv, char **cmd, char *uinput, int a)
 			path_cmnd(cmd);
 		if (access(cmd[0], R_OK) != 0)
 		{
-			print_error(cmd[0], a, argv);
-			all_freed(cmd, uinput);
+			paste_error(cmd[0], a, argv);
+			all_freess(cmd, userinput);
 			exit(127);
 		}
 		if (execve(*cmd, cmd, environ) == -1)
@@ -36,26 +36,26 @@ int see_cmd(char **argv, char **cmd, char *uinput, int a)
 		else
 			return (0);
 	}
-	wait(&sws);
-	if (WIFEXITED(sws))
+	wait(&wstatus);
+	if (WIFEXITED(wstatus))
 	{
-		if (WEXITSTATUS(ws) == 0)
+		if (WEXITSTATUS(wstatus) == 0)
 			return (0);
-		else if (WEXITSTATUS(sws) == 2)
+		else if (WEXITSTATUS(wstatus) == 2)
 			return (2);
-		else if (WEXITSTATUS(sws) == 127)
+		else if (WEXITSTATUS(wstatus) == 127)
 			return (127);
 	}
 	return (127);
 }
 
 /**
- * signal_to_handles - Configures ^C not to terminate our shell
+ * signal_to_handle - Configures ^C not to terminate our shell
  * @signal: Incoming Signal
  */
-void signa_to_handles(int signa)
+void signal_to_handle(int signal)
 {
-	if (signa == SIGINT)
+	if (signal == SIGINT)
 	{
 		PRINT("\n$ ");
 	}

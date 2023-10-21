@@ -1,86 +1,137 @@
 #ifndef SHELL_H
 #define SHELL_H
-#include <stddef.h>
+
+/***** MACROS *****/
+#define PRINT(c) (write(STDERR_FILENO, c, _strlen(c)))
+#define BUFSIZE 10240
+#define DELIMITER " \t\r\n\a"
+
+/*** STANDARD LIBRARIES ***/
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <string.h>
 #include <sys/wait.h>
+#include <stdlib.h>
+#include <signal.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <linux/limits.h>
 
-char *_getline();
-char *enters(char *strs);
-char *spaces(char *strzs);
-void hashtag_handlerss(char *puts);
-int history_dis(__attribute__((unused))char **a, __attribute__((unused))int st);
-int echo_buls(char **cmndss, int str);
+/******** STRING HANDLER FUNCTIONS **********/
 
+char *_strncpy(char *de, char *sor, int y);
+int _strlen(char *m);
+int _putchar(char f);
+int _atoi(char *f);
+void _puts(char *sth);
+int _strcmp(char *str1, char *str2);
+int _isalpha(int z);
+void array_rev(char *arr, int len);
+int intlen(int num);
+char *_itoa(unsigned int z);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
+char *_strchr(char *z, char a);
+int _strncmp(const char *str1, const char *str2, size_t z);
+char *_strdup(char *str);
 
-int dis_envs(__attribute__((unused)) char **cnd, __attribute__((unused)) int st);
-int change_dirt(char **cmnds, __attribute__((unused))int str);
-void exit_bus(char **cmndder, char *inpu, char **argv, int z, int stat);
+/*********** MEMORY HANDLERS ***********/
 
-/*buli executuon*/
-void help_help(void);
-void exit_help(void);
-void cd_help(void);
-void alias_help(void);
-void all_help(void);
+void free_env(char **env);
+void *put_array(void *l, int y, unsigned int ln);
+char *_memocpyes(char *d, char *srv, unsigned int m);
+void *_calloces(unsigned int siz);
+void *_realloces(void *pt, unsigned int b4_size, unsigned int nex_size);
+void all_freess(char **cmny, char *lin);
 
-void env_helper(void);
-void unsetenv_helper(void);
+/****** MISCELLANEOUS AND INPUT FUNCTIONS *******/
 
-
-void setenv_helper(void);
-int display_helper(char **cmnde, __attribute__((unused))int st);
-char **parse_cmdss(char *inp);
-
-void enviro_free(char **environs);
-void enviro_line(char **environ);
-
-void _prerrors(int z, char **cmnd, char **argv);
-void error_files(int z, char **argv);
-void print_error(int count, char *uinput, char **argv);
-
-void file_red(char **argv, char *file);
-void file_treater(char *lines, int count, char **argv, FILE *fp);
-void exit_file_hand(FILE *fd, char **cmnd, char *lines);
-
-
-char *builderss(char *value, char *tok);
-int path_cmnder(char **cmnder);
-char *_getenv(char *name);
+char *_getlin();
+char *spacess(char *strm);
+char *insert(char *strn);
+void hashtag_hands(char *buffar);
+void prompt(void);
+unsigned int is_delim(char c, const char *str);
+char *_strtok(char *str1, const char *delim);
+int histor(char *uinput);
 char **tokener(char *uinput);
 
-int see_cmd(char **argv, char **cmd, char *uinput, int a);
-void signa_to_handles(int signa);
+/****** FILE ARGUMENT HANDLER FUNCTIONS ******/
 
-int _atoi(char vz);
-int _strlen(char *v);
-char *_strncpy(char *srch, int z, char *des);
-void _puts(char *sthr);
-int _putchar(char x);
-char *_strcpy(char *desht, char *src);
-char *_strcat(char *dest, char *src);
-char *_strchr(char *a, char s);
-int _strncmp(const char *str2, const char *str1, size_t y);
-char *_strdup(char *str);
-void array_rev(char *arr, int lens);
-char *_itoa(unsigned int v);
-int _isalpha(int m);
-int _strcmp(char *str1, char *str2);
+void file_red(char *fi, char **argv);
+void file_treaters(char *lin, int cou, FILE *lp, char **argv);
+void leave_file_handle(char **cmn, char *lin, FILE *ld);
 
+/****** PARSED ARGUMENT HANDLER FUNCTIONS *****/
 
+char **par_cmd(char *input);
+int handle_builtin(char **cmd, int er);
+int check_cmd(char **cmd, char *userinput, int a, char **argv);
+void signal_to_handle(int signal);
 
+/******* ERROR HANDLERS ******/
 
+void paste_error(char *uinput, int cou, char **argv);
+void _pas_rerror(char **argv, int s, char **cmn);
+void error_doc(char **argv, int s);
 
+/****** ENVIRONMENT HANDLERS ******/
 
-void print_number_inter(int y);
-int e_printer(char **cmnd);
-void print_num(unsigned int z);
-int histor(char *uinput);
+extern char **environ;
+void en_creation(char **envir);
+void en_free(char **envir);
 
-#endif
+/****** PRINTING FUNCTIONS *****/
+
+void disp_number(unsigned int g);
+void displ_number_int(int y);
+int echo_printer_pro(char **cmns);
+
+/******* PATH FINDER *******/
+
+int path_cmnd(char **cmnd);
+char *builder(char *tok, char *value);
+char *_getenv(char *name);
+
+/******* HELP HANDLERS *******/
+
+void envro_helper(void);
+void setenvro_helper(void);
+void unsetenvro_helper(void);
+void help_history(void);
+void all_asit(void);
+void alias_asit(void);
+void cd_asit(void);
+void exit_asit(void);
+void help_asit(void);
+int displayenvro_helper(char **cmnd, __attribute__((unused))int st);
+
+/****** BUILTIN COMMAND HANDLERS AND EXECUTE ******/
+
+int is_builtis(char **cmnd);
+int han_builtis(char **cmd, int st);
+void leave_bul(char **cmnd, char *input, char **argv, int z, int stat);
+int change_dirt(char **cmnd, __attribute__((unused))int st);
+int enve_disp(__attribute__((unused)) char **cnd,
+	    __attribute__((unused)) int st);
+int see_bul(char **cmnd, int st);
+int hist_dis(__attribute__((unused))char **a, __attribute__((unused)) int st);
+
+/****** BUILT-IN COMMANDS STRUCT *****/
+
+/**
+ * struct _builtin - Defines a struct that conatins built-in commands
+ * with their respective implementation functions
+ * @command: - Built-in command
+ * @function: - Pointer to custom functions that have
+ * similar functionalities as the built-in commands
+ */
+typedef struct _builtin
+{
+	char *command;
+	int (*function)(char **line, int st);
+} builtin;
+
+#endif /*HEADER_H*/

@@ -1,23 +1,23 @@
 #include "shell.h"
 
 /**
- * path_cmnder -  Search In $PATH for executable command
+ * path_cmnd -  Search In $PATH for executable command
  * @cmnd: Parsed input
  * Return: 0 on success or  1 on failure  0
  */
-int path_cmnder(char **cmnder)
+int path_cmnd(char **cmnd)
 {
-	char *path, *cmnd_dir, *value;
+	char *path, *value, *cmnd_dir;
 	struct stat buff;
 
 	path = _getenv("PATH");
 	value = _strtok(path, ":");
 	while (value != NULL)
 	{
-		cmnd_dir = builder(*cmnder, value);
+		cmnd_dir = builder(*cmnd, value);
 		if (stat(cmnd_dir, &buff) == 0)
 		{
-			*cmnder = _strdup(cmnd_dir);
+			*cmnd = _strdup(cmnd_dir);
 			free(cmnd_dir);
 			free(path);
 			return (0);
@@ -31,17 +31,17 @@ int path_cmnder(char **cmnder)
 }
 
 /**
- * builderss - Build command
+ * builder - Build command
  * @tok: Executable command
  * @value: Directory conatining Command
  * Return: Parsed full path of command or NULL if failed
  */
-char *builderss(char *value, char *tok)
+char *builder(char *tok, char *value)
 {
-	size_t see;
 	char *cmnd;
+	size_t len;
 
-	see = _strlen(value) + _strlen(tok) + 2;
+	len = _strlen(value) + _strlen(tok) + 2;
 	cmnd = malloc(sizeof(char) * len);
 	if (cmnd == NULL)
 	{
@@ -65,32 +65,32 @@ char *builderss(char *value, char *tok)
  */
 char *_getenv(char *name)
 {
-	size_t name_lengt, value_lengt;
-	char *val;
-	int i, x, s;
+	size_t name_length, value_length;
+	char *value;
+	int i, j, x;
 
-	name_lengt = _strlen(name);
+	name_length = _strlen(name);
 	for (i = 0 ; environ[i]; i++)
 	{
-		if (_strncmp(name, environ[i], name_lengt) == 0)
+		if (_strncmp(name, environ[i], name_length) == 0)
 		{
-			value_lengt = _strlen(environ[i]) - name_lengt;
-			val = malloc(sizeof(char) * value_lengt);
-			if (!val)
+			value_length = _strlen(environ[i]) - name_length;
+			value = malloc(sizeof(char) * value_length);
+			if (!value)
 			{
-				free(val);
+				free(value);
 				perror("unable to alloc");
 				return (NULL);
 			}
 
-			s = 0;
-			for (x = name_lengt + 1; environ[i][x]; x++, s++)
+			j = 0;
+			for (x = name_length + 1; environ[i][x]; x++, j++)
 			{
-				val[s] = environ[i][x];
+				value[j] = environ[i][x];
 			}
-			val[s] = '\0';
+			value[j] = '\0';
 
-			return (val);
+			return (value);
 		}
 	}
 	return (NULL);
