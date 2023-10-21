@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * is_delimin - function that checks if a character matchs any character
- * @v: character to check
- * @sth: string of delimiters
+ * is_delim - function that checks if a character matchs any character
+ * @c: character to check
+ * @str: string of delimiters
  * Return: 1 on success, 0 on failure
  */
-unsigned int is_delimin(char v, const char *sth)
+unsigned int is_delimin(char c, const char *str)
 {
-	unsigned int g;
+	unsigned int i;
 
-	for (g = 0; sth[g] != '\0'; g++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (v == sth[g])
+		if (c == str[i])
 			return (1);
 	}
 	return (0);
@@ -24,42 +24,42 @@ unsigned int is_delimin(char v, const char *sth)
  * @delim: delimiter
  * Return: pointer to the next token or NULL
  */
-char *_strtok(char *str0, const char *de)
+char *_strtok(char *str1, const char *delim)
 {
-	static char *ctoks;
-	static char *tokss;
-	unsigned int v;
+	static char *toks;
+	static char *ntoks;
+	unsigned int i;
 
-	if (str0 != NULL)
-		ctoks = str0;
-	tokss = ctoks;
-	if (tokss == NULL)
+	if (str1 != NULL)
+		ntoks = str1;
+	toks = ntoks;
+	if (toks == NULL)
 		return (NULL);
-	for (v = 0; tokss[v] != '\0'; v++)
+	for (i = 0; toks[i] != '\0'; i++)
 	{
-		if (is_delimin(tokss[v], de) == 0)
+		if (is_delimin(toks[i], delim) == 0)
 			break;
 	}
-	if (ctoks[v] == '\0' || ctoks[v] == '#')
+	if (ntoks[i] == '\0' || ntoks[i] == '#')
 	{
-		ctoks = NULL;
+		ntoks = NULL;
 		return (NULL);
 	}
-	tokss = ctoks + v;
-	ctoks = tokss;
-	for (v = 0; ctoks[v] != '\0'; v++)
+	toks = ntoks + i;
+	ntoks = toks;
+	for (i = 0; ntoks[i] != '\0'; i++)
 	{
-		if (is_delimin(ctoks[v], de) == 1)
+		if (is_delimin(ntoks[i], delim) == 1)
 			break;
 	}
-	if (ctoks[v] == '\0')
-		ctoks = NULL;
+	if (ntoks[i] == '\0')
+		ntoks = NULL;
 	else
 	{
-		ctoks[v] = '\0';
-		ctoks = ctoks + v + 1;
-		if (*ctoks == '\0')
-			ctoks = NULL;
+		ntoks[i] = '\0';
+		ntoks = ntoks + i + 1;
+		if (*ntoks == '\0')
+			ntoks = NULL;
 	}
-	return (tokss);
+	return (toks);
 }

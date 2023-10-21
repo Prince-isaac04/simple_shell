@@ -53,7 +53,7 @@ char *spacess(char *strm);
 char *insert(char *strn);
 void hashtag_hands(char *buffar);
 void prompt(void);
-unsigned int is_delim(char c, const char *str);
+unsigned int is_delimin(char c, const char *str);
 char *_strtok(char *str1, const char *delim);
 int histor(char *uinput);
 char **tokener(char *uinput);
